@@ -9,7 +9,7 @@
   "production" : {
    "host": "containers-us-west-76.railway.app",
    "database": "railway",
-   "port": "5978",
+   "port": "6115",
    "user": "postgres",
    "password": "tK4HTYG5ykeLLFndoUcG",
    "database_url": "postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}",
