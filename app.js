@@ -260,7 +260,7 @@ app.put("/post/:id", multer.single("image"), async (req, res) => {
           highlight: highlight,
           body: body,
           modifiedBy: user,
-          imgUrl: `https://storage.googleapis.com/sewa-parkir.appspot.com/${prefix}-${name.replace(
+          imgUrl: `https://storage.googleapis.com/sewa-parkir.appspot.com/${prefix}-${req.body.title.replace(
             " ",
             "-"
           )}-${Number(version)}`,
