@@ -7,11 +7,11 @@
     "dialect": "postgres"
   },
   "production" : {
-   "host": "containers-us-west-110.railway.app",
+   "host": "containers-us-west-76.railway.app",
    "database": "railway",
    "port": "5978",
    "user": "postgres",
-   "password": "sSAif3wbBvmZ0jEvZ7Md",
+   "password": "tK4HTYG5ykeLLFndoUcG",
    "database_url": "postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}",
    "dialect": "postgres"
   }
