@@ -12,6 +12,7 @@
       "PGHOST": "containers-us-west-110.railway.app",
       "PGPASSWORD": "sSAif3wbBvmZ0jEvZ7Md",
       "PGPORT": "5978",
-      "PGUSER": "postgres"
+      "PGUSER": "postgres",
+      "dialect": "postgres"
   }
 }
