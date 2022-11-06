@@ -6,7 +6,12 @@
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
-  "production" : {
-    "command": "PGPASSWORD=sSAif3wbBvmZ0jEvZ7Md psql -h containers-us-west-110.railway.app -U postgres -p 5978 -d railway"
+  "production": {
+      "DATABASE_URL": "postgresql://postgres:sSAif3wbBvmZ0jEvZ7Md@containers-us-west-110.railway.app:5978/railway",
+      "PGDATABASE": "railway",
+      "PGHOST": "containers-us-west-110.railway.app",
+      "PGPASSWORD": "sSAif3wbBvmZ0jEvZ7Md",
+      "PGPORT": "5978",
+      "PGUSER": "postgres"
   }
 }
