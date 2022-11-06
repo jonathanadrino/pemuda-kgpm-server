@@ -246,7 +246,6 @@ app.put("/post/:id", multer.single("image"), async (req, res) => {
     const { id } = req.params;
     const { title, highlight, body } = req.body;
     const user = req.user.username;
-    const version = data.version;
     const prefix = "post-websitepemuda";
     if (!req.file) {
       const data = await Post.findByPk(id);
