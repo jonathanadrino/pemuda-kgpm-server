@@ -6,9 +6,10 @@ const authentication = async function (req, res, next) {
   try {
     const { access_token } = req.headers;
 
-    const payloadData = verify(access_token, 'SECRET');
-
+    console.log(process.env.JWT_KEY, 'dari auth');
+    const payloadData = verify(access_token, process.env.JWT_KEY);
     console.log(payloadData);
+
     const user = await User.findByPk(payloadData);
 
     if (!user) {

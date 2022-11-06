@@ -183,6 +183,12 @@ app.get("/renungan/:id", async (req, res) => {
 
 app.use(authentication);
 
+app.get('/auth', async(req,res) => {
+  res.status(200).json({
+    message: 'app running'
+  })
+})
+
 app.post("/post", multer.single("image"), async (req, res) => {
   try {
     if (req.file) {
