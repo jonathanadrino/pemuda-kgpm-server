@@ -13,11 +13,11 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get('/', (req,res) => {
+app.get("/", (req, res) => {
   res.status(200).json({
-    message: 'app is running'
-  })
-})
+    message: "app is running",
+  });
+});
 
 app.get("/user", async (req, res) => {
   try {
@@ -189,11 +189,11 @@ app.get("/renungan/:id", async (req, res) => {
 
 app.use(authentication);
 
-app.get('/auth', async(req,res) => {
+app.get("/auth", async (req, res) => {
   res.status(200).json({
-    message: 'app running'
-  })
-})
+    message: "app running",
+  });
+});
 
 app.post("/post", multer.single("image"), async (req, res) => {
   try {
@@ -249,8 +249,21 @@ app.put("/post/:id", multer.single("image"), async (req, res) => {
     const user = req.user.username;
     const version = data.version;
     if (!req.file) {
+      await bucket
+        .file(`${prefix}-${data.title.replace(" ", "-")}-${version}`)
+        .rename(`${prefix}-${title.replace(" ", "-")}-${version}`);
+
       await Post.update(
-        { title: title, highlight: highlight, body: body, modifiedBy: user },
+        {
+          title: title,
+          highlight: highlight,
+          body: body,
+          modifiedBy: user,
+          imgUrl: `https://storage.googleapis.com/sewa-parkir.appspot.com/${prefix}-${name.replace(
+            " ",
+            "-"
+          )}-${Number(version)}`,
+        },
         { where: { id: id } }
       );
 
@@ -311,19 +324,19 @@ app.delete("/post/:id", async (req, res) => {
       .file(`${prefix}-${data.title.replace(" ", "-")}-${version}`)
       .delete();
 
-    await Post.destroy({where: {id}})
+    await Post.destroy({ where: { id } });
 
-    const newData = await Post.findAll()
+    const newData = await Post.findAll();
 
     res.status(200).json({
-      message: 'Post deleted',
-      newData
-    })
+      message: "Post deleted",
+      newData,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Internal server error'
-    })
+      message: "Internal server error",
+    });
   }
 });
 
@@ -354,17 +367,17 @@ app.delete("/renungan/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    await Renungan.destroy({ where: {id} });
-    const data = await Renungan.findAll()
-    console.log('jadi');
+    await Renungan.destroy({ where: { id } });
+    const data = await Renungan.findAll();
+    console.log("jadi");
     res.status(200).json({
-      message: 'Post deleted',
-      data
-    })
+      message: "Post deleted",
+      data,
+    });
   } catch (err) {
     res.status(500).json({
-      message: 'Internal server error'
-    })
+      message: "Internal server error",
+    });
   }
 });
 
