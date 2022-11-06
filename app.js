@@ -245,11 +245,12 @@ app.put("/post/:id", multer.single("image"), async (req, res) => {
     console.log(req.body);
     const { id } = req.params;
     const { title, highlight, body } = req.body;
-    const data = await Post.findByPk(id);
     const user = req.user.username;
     const version = data.version;
     const prefix = "post-websitepemuda";
     if (!req.file) {
+      const data = await Post.findByPk(id);
+      const version = data.version;
       await bucket
         .file(`${prefix}-${data.title.replace(" ", "-")}-${version}`)
         .rename(`${prefix}-${title.replace(" ", "-")}-${version}`);
@@ -272,7 +273,8 @@ app.put("/post/:id", multer.single("image"), async (req, res) => {
         message: "Post updated",
       });
     } else {
-      console.log(data.version, "ini version");
+      const data = await Post.findByPk(id);
+      const version = data.version;
       const prefix = "post-websitepemuda";
       await bucket
         .file(`${prefix}-${data.title.replace(" ", "-")}-${version}`)
