@@ -248,6 +248,7 @@ app.put("/post/:id", multer.single("image"), async (req, res) => {
     const data = await Post.findByPk(id);
     const user = req.user.username;
     const version = data.version;
+    const prefix = "post-websitepemuda";
     if (!req.file) {
       await bucket
         .file(`${prefix}-${data.title.replace(" ", "-")}-${version}`)
