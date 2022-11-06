@@ -7,15 +7,6 @@
     "dialect": "postgres"
   },
   "production" : {
-    "use_env_variable": "DATABASE_URL",
-    "ssl": true,
-    "dialect": "postgres",
-    "protocol" : "postgres",
-    "dialectOptions" : {
-      "ssl" : {
-        "require" : true,
-        "rejectUnauthorized": false
-      }
-    }
+    "command": "PGPASSWORD=sSAif3wbBvmZ0jEvZ7Md psql -h containers-us-west-110.railway.app -U postgres -p 5978 -d railway"
   }
 }
