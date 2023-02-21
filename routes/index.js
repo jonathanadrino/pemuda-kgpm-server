@@ -1,3 +1,5 @@
+"use strict";
+
 require("dotenv").config();
 const authSecret = process.env.AUTH_SECRET;
 const express = require("express");

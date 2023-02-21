@@ -1,8 +1,10 @@
+"use strict";
+
 const express = require("express");
 const router = express.Router();
-const UserController = require('../controllers/user')
+const UserController = require("../controllers/user");
 
-router.post('/', UserController.createUser)
-router.patch('/:id', UserController.deactiveUser)
+router.post("/", UserController.createUser);
+router.patch("/:id", UserController.deactiveUser);
 
-module.exports = router
+module.exports = router;

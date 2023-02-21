@@ -1,4 +1,5 @@
 "use strict";
+
 require("dotenv").config();
 const { verify } = require("jsonwebtoken");
 const { User } = require("../models");

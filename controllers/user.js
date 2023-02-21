@@ -1,3 +1,5 @@
+"use strict";
+
 require("dotenv").config();
 const { User } = require("../models");
 const { hash, compare } = require("../helpers/bcrypt");
@@ -59,14 +61,16 @@ class UserController {
         };
       }
 
-      const request = await User.update({
-        access: "deactivated",
-      },
-      {
-        where: {
-          id,
+      const request = await User.update(
+        {
+          access: "deactivated",
         },
-      });
+        {
+          where: {
+            id,
+          },
+        }
+      );
 
       res.status(200).json({
         message: "User deactivated",
